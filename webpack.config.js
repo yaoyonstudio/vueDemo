@@ -31,7 +31,9 @@ var config = {
 				loader: 'eslint-loader',
 				enforce: "pre",
 				include: path.join(__dirname, "src"),
-				exclude: /node_modules/
+				exclude: [
+					/node_modules/
+				]
 			},
 			{
 				test: /\.vue$/,
@@ -90,7 +92,10 @@ var config = {
 		]
 	},
 	resolve: {
-	    extensions: [".webpack.js", ".vue", ".js", ".css", ".scss"]
+	    extensions: [".webpack.js", ".vue", ".js", ".css", ".scss"],
+	    alias: {
+	    	vue: 'vue/dist/vue.js'
+	    }
 	},
 	plugins: [
 		extractSCSS,

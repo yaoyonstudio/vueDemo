@@ -2,8 +2,6 @@
   <div class="menuContainer">
     <ul class="flexRowBetween">
       <router-link class="flexItem" :class="{'router-link-active': $route.path === '/' && item.link === '/index' }" tag="li" :to="item.link" v-for="item in menus">{{ item.title }}</router-link >
-    }
-    }
     </ul>
   </div>
 </template>

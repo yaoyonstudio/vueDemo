@@ -1,7 +1,6 @@
 <template>
-  <div class="page flexColumnBetween">
-    <router-view class="mainContent"></router-view>
-    <v-menu></v-menu>
+  <div class="page">
+    <router-view></router-view>
   </div>
 </template>
 

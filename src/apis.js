@@ -6,7 +6,9 @@ export default {
   fun: () => {
     return 'fun'
   },
-  getPosts: () => {
-    return axios.get(apiUrl + '/posts')
+  getArticles: (page, pagesize) => {
+    let _page = page || 1
+    let _pagesize = pagesize || 10
+    return axios.get(apiUrl + '/articles?_page=' + _page + '&_limit=' + _pagesize)
   }
 }
