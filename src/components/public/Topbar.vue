@@ -7,14 +7,7 @@
 <script>
 export default {
   name: 'Topbar',
-  props: ['title'],
-  data () {
-    return {
-      msg: 'Hello Vue.js!'
-    }
-  },
-  methods: {
-  }
+  props: ['title']
 }
 </script>
 
@@ -23,7 +16,7 @@ export default {
 header {
   width: 100%; height: 4rem; line-height: 4rem; background-color: $mainColor;
   h2 {
-    text-align: center; color: $lightColor; font-weight: center; width: 80%; margin: 0 auto; font-weight: normal;
+    text-align: center; color: $lightColor; font-weight: center; width: 80%; margin: 0 auto; font-weight: normal; font-size: 1.8rem;
   }
 }
 </style>
