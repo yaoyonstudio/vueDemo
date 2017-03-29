@@ -1,3 +1,4 @@
+export const INIT = 'INIT'
 export const GETARTICLES = 'GETARTICLES'
 export const ADDPAGE = 'ADDPAGE'
 export const GETARTICLE = 'GETARTICLE'

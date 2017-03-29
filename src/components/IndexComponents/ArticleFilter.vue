@@ -97,7 +97,8 @@ export default {
       if (item.subItems) {
         return
       }
-      console.log(item)
+      this.currentFilterIndex = 0
+      this.$parent.$emit('ORDER', item.id)
     },
     selectFilterItem (subItem) {
       // console.log(subItem)
@@ -156,7 +157,7 @@ export default {
     .itemActive{border-bottom: 2px solid $mainColor; color: $mainColor; }
   }
   .filterContent{
-    width: 100%; height: calc(100vh - 7rem); background-color: $mainBgColor; position: relative;
+    width: 100%; height: calc(100vh - 4rem); background-color: $mainBgColor; position: relative;
     .items{
       background-color: $lightColor;
       &>li{

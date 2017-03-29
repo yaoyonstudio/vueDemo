@@ -54,7 +54,11 @@ export default {
     let queryString = articleIds.join('&id=')
     return axios.get(apiUrl + '/articles?id=' + queryString)
   },
-  getFilterArticles: (condition) => {
+  getFilterArticles: (page, pagesize, condition) => {
+    let _page = page || 1
+    let _pagesize = pagesize || 10
+    let params
+    let paramsString
     // source=2,5&month=8,10,11
     // 根据条件字符串来拼接API查询的参数
     // let testCondition = 'source=2,5&month=8,10,11'
@@ -84,8 +88,13 @@ export default {
       params = params.substr(0, params.length - 1)
       return params
     }
-    let params = getParams(condition)
+    if (condition) {
+      params = getParams(condition)
+      paramsString = '&' + params
+    } else {
+      paramsString = ''
+    }
     // console.log(getParams(testCondition))
-    return axios.get(apiUrl + '/articles?' + params)
+    return axios.get(apiUrl + '/articles?_page=' + _page + '&_limit=' + _pagesize + paramsString)
   }
 }

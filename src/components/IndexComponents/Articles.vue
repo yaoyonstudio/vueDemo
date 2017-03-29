@@ -59,7 +59,8 @@ export default {
         'http://covteam.u.qiniudn.com/test19.jpg',
         'http://covteam.u.qiniudn.com/test20.jpg',
         'http://covteam.u.qiniudn.com/test21.jpg'
-      ]
+      ],
+      filterString: null
     }
   },
   computed: {
@@ -84,19 +85,34 @@ export default {
       if (that.$store.state.indexModule.hasMore && that.$store.state.indexModule.loaded) {
         console.log('load more')
         that.$store.commit('ADDPAGE')
-        that.$store.dispatch('getArticlesAction')
+        // that.$store.dispatch('getArticlesAction')
+        that.$store.dispatch('getFilterArticlesAction', {conditionString: that.filterString})
       }
     })
+    // 排序
+    this.$on('ORDER', (type) => {
+      that.$store.getters.orderArticles(type)
+    })
+    // 筛选
     this.$on('FILTER', (filterString) => {
       console.log(filterString)
+      console.log('筛选条件是否相同：', that.filterString === filterString)
+      if (that.filterString && that.filterString === filterString) {
+      } else {
+        that.filterString = filterString || null
+        that.$store.commit('INIT')
+      }
       that.$store.dispatch('getFilterArticlesAction', {conditionString: filterString})
     })
   },
   methods: {
     loadMore () {
+      let that = this
+      console.log(that.filterString)
       if (this.$store.state.indexModule.hasMore && this.$store.state.indexModule.loaded) {
         this.$store.commit('ADDPAGE')
-        this.$store.dispatch('getFilterArticlesAction')
+        // this.$store.dispatch('getFilterArticlesAction')
+        that.$store.dispatch('getFilterArticlesAction', {conditionString: that.filterString})
       }
     }
   },
